@@ -25,6 +25,16 @@ public class SettlementService {
 		settlementRepository.save(settlement);
 	}
 
+	public Long createSettlementAndReturnId(SettlementRequest request) {
+		Settlement settlement = Settlement.builder()
+			.name(request.getName())
+			.ownerId(request.getOwnerId())
+			.build();
+		Long settlementId = settlementRepository.saveAndReturnId(settlement); // 저장 후 ID 반환
+		return settlementId;
+	}
+
+
 	public List<SettlementResponse> getAllSettlements() {
 		return settlementRepository.findAll().stream()
 			.map(s -> new SettlementResponse(s.getId(), s.getName(), s.getOwnerId()))
@@ -36,4 +46,19 @@ public class SettlementService {
 			.map(s -> new SettlementResponse(s.getId(), s.getName(), s.getOwnerId()))
 			.collect(Collectors.toList());
 	}
+
+	public SettlementResponse getSettlementById(Long id) {
+		Settlement settlement = settlementRepository.findById(id)
+			.orElseThrow(() -> new IllegalArgumentException("정산을 찾을 수 없습니다."));
+		return new SettlementResponse(settlement.getId(), settlement.getName(), settlement.getOwnerId());
+	}
+
+	public void deleteSettlement(Long id) {
+		settlementRepository.deleteById(id);
+	}
+
+	public void joinSettlement(Long userId, Long settlementId) {
+		settlementRepository.addParticipant(userId, settlementId);
+	}
+
 }

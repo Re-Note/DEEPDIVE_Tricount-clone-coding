@@ -39,4 +39,9 @@ public class ExpenseService {
 				e.getUserId()))
 			.collect(Collectors.toList());
 	}
+
+	public void deleteExpense(Long id) {
+		expenseRepository.deleteById(id);
+	}
+
 }

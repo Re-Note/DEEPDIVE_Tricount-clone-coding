@@ -28,4 +28,11 @@ public class ExpenseController {
 		List<ExpenseResponse> expenses = expenseService.getExpensesBySettlementId(settlementId);
 		return ResponseEntity.ok(expenses);
 	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteExpense(@PathVariable Long id) {
+		expenseService.deleteExpense(id);
+		return ResponseEntity.ok("지출이 삭제되었습니다.");
+	}
+
 }

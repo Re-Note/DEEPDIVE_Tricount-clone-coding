@@ -21,4 +21,11 @@ public class BalanceController {
 		List<BalanceResponse> balances = balanceService.calculateBalances(settlementId);
 		return ResponseEntity.ok(balances);
 	}
+
+	@GetMapping
+	public ResponseEntity<List<BalanceResponse>> getSettleBalance(@RequestParam Long settlementId) {
+		List<BalanceResponse> balances = balanceService.calculateBalances(settlementId);
+		return ResponseEntity.ok(balances);
+	}
+
 }

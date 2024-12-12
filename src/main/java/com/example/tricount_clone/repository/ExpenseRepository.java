@@ -35,4 +35,10 @@ public class ExpenseRepository {
 		String sql = "SELECT * FROM expenses WHERE settlement_id = ?";
 		return jdbcTemplate.query(sql, expenseRowMapper, settlementId);
 	}
+
+	public void deleteById(Long id) {
+		String sql = "DELETE FROM expenses WHERE id = ?";
+		jdbcTemplate.update(sql, id);
+	}
+
 }
