@@ -34,7 +34,6 @@ public class SettlementService {
 		return settlementId;
 	}
 
-
 	public List<SettlementResponse> getAllSettlements() {
 		return settlementRepository.findAll().stream()
 			.map(s -> new SettlementResponse(s.getId(), s.getName(), s.getOwnerId()))
