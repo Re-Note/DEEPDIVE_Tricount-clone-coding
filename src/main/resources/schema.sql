@@ -4,3 +4,9 @@ CREATE TABLE users (
                        password VARCHAR(255) NOT NULL,
                        nickname VARCHAR(50) NOT NULL
 );
+
+CREATE TABLE settlements (
+                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                             name VARCHAR(100) NOT NULL,
+                             owner_id BIGINT NOT NULL
+);

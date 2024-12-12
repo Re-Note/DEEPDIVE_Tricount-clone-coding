@@ -14,8 +14,7 @@ public class SecurityConfig {
 		http
 			.csrf(AbstractHttpConfigurer::disable) // CSRF 비활성화
 			.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/users/signup").permitAll() // 회원가입 API 인증 제외
-				.anyRequest().authenticated() // 나머지 요청은 인증 필요
+				.anyRequest().permitAll() // 모든 요청 허용
 			);
 
 		return http.build();
