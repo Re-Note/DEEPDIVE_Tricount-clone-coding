@@ -1,6 +1,8 @@
 package com.example.tricount_clone.repository;
 
 import com.example.tricount_clone.domain.User;
+
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -24,4 +26,16 @@ public class UserRepository {
 		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, username);
 		return count != null && count > 0;
 	}
+
+	// 유저 ID로 이름 조회
+	public String getUserNameById(Long userId) {
+		String sql = "SELECT nickname FROM users WHERE id = ?";
+		try {
+			return jdbcTemplate.queryForObject(sql, String.class, userId);
+		} catch (EmptyResultDataAccessException e) {
+			// 결과가 없는 경우 null 반환
+			return null;
+		}
+	}
+
 }
