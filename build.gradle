@@ -39,3 +39,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Executable JAR 패키징
+bootJar {
+	launchScript()
+}
