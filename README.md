@@ -1,1 +1,9 @@
-# DEEPDIVE_Tricount-clone-coding
+### [DEEPDIVE] 실습 과제 12.Tricount 클론 코딩
+
+### [기본 구현 요구 사항]
+
+### [구현 결과 이미지]
+
+---
+
+### [추가 구현 요구 사항]
